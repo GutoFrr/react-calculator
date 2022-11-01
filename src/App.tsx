@@ -1,5 +1,6 @@
 import { useReducer } from 'react'
 import DigitButton from './components/DigitButton'
+import OperationButton from './components/OperationButton'
 
 export const ACTIONS = {
   ADD_DIGIT: 'add-digit',
@@ -14,7 +15,7 @@ const reducer = (state: any, { type, payload }: any) => {
     case ACTIONS.ADD_DIGIT:
       return {
         ...state,
-        currentOperand: `${currentOperand || ''} ${payload.digit}`,
+        currentOperand: `${state.currentOperand || ''} ${payload.digit}`,
       }
   }
 }
@@ -37,24 +38,24 @@ const App: React.FC = () => {
             {previousOperand} {operation}
           </div>
           {/* current operand */}
-          <div className="text-3xl">{currentOperand}</div>
+          <div className="text-3xl tracking-[-0.2rem]">{currentOperand}</div>
         </div>
         {/* operators */}
         <button className="col-span-2">AC</button>
         <button>DEL</button>
-        <button>÷</button>
+        <OperationButton operation="÷" dispatch={dispatch} />
         <DigitButton digit="7" dispatch={dispatch} />
         <DigitButton digit="8" dispatch={dispatch} />
         <DigitButton digit="9" dispatch={dispatch} />
-        <button>*</button>
+        <OperationButton operation="*" dispatch={dispatch} />
         <DigitButton digit="4" dispatch={dispatch} />
         <DigitButton digit="5" dispatch={dispatch} />
         <DigitButton digit="6" dispatch={dispatch} />
-        <button>+</button>
+        <OperationButton operation="+" dispatch={dispatch} />
         <DigitButton digit="1" dispatch={dispatch} />
         <DigitButton digit="2" dispatch={dispatch} />
         <DigitButton digit="3" dispatch={dispatch} />
-        <button>-</button>
+        <OperationButton operation="-" dispatch={dispatch} />
         <DigitButton digit="." dispatch={dispatch} />
         <DigitButton digit="0" dispatch={dispatch} />
         <button className="col-span-2">=</button>
