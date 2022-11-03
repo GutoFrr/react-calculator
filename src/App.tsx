@@ -121,7 +121,7 @@ const evaluate = ({ currentOperand, previousOperand, operation }: any) => {
     case '-':
       computation = prev - current
       break
-    case '*':
+    case 'x':
       computation = prev * current
       break
     case '÷':
@@ -133,7 +133,7 @@ const evaluate = ({ currentOperand, previousOperand, operation }: any) => {
 }
 
 const INTEGER_FORMATTER = new Intl.NumberFormat('pt-br', {
-  maximumFractionDigits: 0,
+  maximumFractionDigits: 3,
 })
 
 const formatOperand = (operand: any) => {
@@ -187,7 +187,7 @@ const App: React.FC = () => {
         <DigitButton digit="8" dispatch={dispatch} style="bg-neutral-200" />
         <DigitButton digit="9" dispatch={dispatch} style="bg-neutral-200" />
         <OperationButton
-          operation="*"
+          operation="x"
           dispatch={dispatch}
           style="bg-blue-400"
         />
