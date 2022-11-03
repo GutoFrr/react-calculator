@@ -151,48 +151,70 @@ const App: React.FC = () => {
   )
 
   return (
-    <div className="container mx-auto">
-      <h1 className="text-3xl font-bold text-center">React Calculator</h1>
+    <div className="container mx-auto py-4">
       {/* calculator */}
-      <div className="max-w-xs grid grid-cols-4 grid-rows-7 mx-auto">
+      <div className="w-80 grid grid-cols-4 grid-rows-7 mx-auto">
         {/* output */}
-        <div className="flex flex-col items-end justify-around p-3 bg-neutral-900 col-span-4 shadow-md text-end border-zinc-600 border backdrop-blur-lg">
+        <div className="flex flex-col items-end justify-around p-3 bg-neutral-900 col-span-4 shadow-md text-end backdrop-blur-lg rounded-t-md">
           {/* previous operand */}
           <div className="text-zinc-400 tracking-[-0.05rem] h-6">
             {formatOperand(previousOperand)} {operation}
           </div>
           {/* current operand */}
-          <div className="text-2xl tracking-[-0.05rem] h-8">
+          <div className="text-2xl tracking-[-0.05rem] h-8 text-white">
             {formatOperand(currentOperand)}
           </div>
         </div>
         {/* operators */}
         <button
-          className="col-span-2"
+          className="col-span-2 bg-neutral-300"
           onClick={() => dispatch({ type: ACTIONS.CLEAR })}
         >
           AC
         </button>
-        <button onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}>
+        <button
+          onClick={() => dispatch({ type: ACTIONS.DELETE_DIGIT })}
+          className="bg-neutral-300"
+        >
           DEL
         </button>
-        <OperationButton operation="÷" dispatch={dispatch} />
-        <DigitButton digit="7" dispatch={dispatch} />
-        <DigitButton digit="8" dispatch={dispatch} />
-        <DigitButton digit="9" dispatch={dispatch} />
-        <OperationButton operation="*" dispatch={dispatch} />
-        <DigitButton digit="4" dispatch={dispatch} />
-        <DigitButton digit="5" dispatch={dispatch} />
-        <DigitButton digit="6" dispatch={dispatch} />
-        <OperationButton operation="+" dispatch={dispatch} />
-        <DigitButton digit="1" dispatch={dispatch} />
-        <DigitButton digit="2" dispatch={dispatch} />
-        <DigitButton digit="3" dispatch={dispatch} />
-        <OperationButton operation="-" dispatch={dispatch} />
-        <DigitButton digit="," dispatch={dispatch} />
-        <DigitButton digit="0" dispatch={dispatch} />
+        <OperationButton
+          operation="÷"
+          dispatch={dispatch}
+          style="bg-blue-400"
+        />
+        <DigitButton digit="7" dispatch={dispatch} style="bg-neutral-200" />
+        <DigitButton digit="8" dispatch={dispatch} style="bg-neutral-200" />
+        <DigitButton digit="9" dispatch={dispatch} style="bg-neutral-200" />
+        <OperationButton
+          operation="*"
+          dispatch={dispatch}
+          style="bg-blue-400"
+        />
+        <DigitButton digit="4" dispatch={dispatch} style="bg-neutral-200" />
+        <DigitButton digit="5" dispatch={dispatch} style="bg-neutral-200" />
+        <DigitButton digit="6" dispatch={dispatch} style="bg-neutral-200" />
+        <OperationButton
+          operation="+"
+          dispatch={dispatch}
+          style="bg-blue-400"
+        />
+        <DigitButton digit="1" dispatch={dispatch} style="bg-neutral-200" />
+        <DigitButton digit="2" dispatch={dispatch} style="bg-neutral-200" />
+        <DigitButton digit="3" dispatch={dispatch} style="bg-neutral-200" />
+        <OperationButton
+          operation="-"
+          dispatch={dispatch}
+          style="bg-blue-400"
+        />
+        <DigitButton
+          digit=","
+          dispatch={dispatch}
+          style="bg-neutral-200 rounded-bl-md"
+        />
+        <DigitButton digit="0" dispatch={dispatch} style="bg-neutral-200" />
         <button
-          className="col-span-2"
+          className="col-span-2 bg-blue-500 rounded-br-md"
           onClick={() => dispatch({ type: ACTIONS.EVALUATE })}
         >
           =
