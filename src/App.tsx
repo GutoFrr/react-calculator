@@ -24,7 +24,7 @@ const reducer = (state: any, { type, payload }: any) => {
       if (payload.digit === '0' && state.currentOperand === '0') {
         return state
       }
-      if (payload.digit === ',' && state.currentOperand.includes(',')) {
+      if (payload.digit === '.' && state.currentOperand.includes('.')) {
         return state
       }
 
@@ -132,16 +132,16 @@ const evaluate = ({ currentOperand, previousOperand, operation }: any) => {
   return computation?.toString()
 }
 
-const INTEGER_FORMATTER = new Intl.NumberFormat('pt-br', {
+const INTEGER_FORMATTER = new Intl.NumberFormat('en-US', {
   maximumFractionDigits: 3,
 })
 
 const formatOperand = (operand: any) => {
   if (operand == null) return
-  const [integer, decimal] = operand.split(',')
+  const [integer, decimal] = operand.split('.')
   if (decimal == null) return INTEGER_FORMATTER.format(integer)
 
-  return `${INTEGER_FORMATTER.format(integer)},${decimal}`
+  return `${INTEGER_FORMATTER.format(integer)}.${decimal}`
 }
 
 const App: React.FC = () => {
@@ -207,11 +207,19 @@ const App: React.FC = () => {
           dispatch={dispatch}
           style="bg-blue-400"
         />
-        <DigitButton
-          digit=","
-          dispatch={dispatch}
-          style="bg-neutral-200 rounded-bl-md"
-        />
+        {currentOperand ? (
+          <DigitButton
+            digit="."
+            dispatch={dispatch}
+            style="bg-neutral-200 rounded-bl-md"
+          />
+        ) : (
+          <DigitButton
+            digit="."
+            dispatch={() => console.log('Banana')}
+            style="bg-neutral-200 rounded-bl-md"
+          />
+        )}
         <DigitButton digit="0" dispatch={dispatch} style="bg-neutral-200" />
         <button
           className="col-span-2 bg-blue-500 rounded-br-md"
