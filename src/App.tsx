@@ -155,13 +155,13 @@ const App: React.FC = () => {
       {/* calculator */}
       <div className="w-80 grid grid-cols-4 grid-rows-7 mx-auto shadow-xl">
         {/* output */}
-        <div className="flex flex-col items-end justify-around p-3 bg-neutral-900 col-span-4 shadow-md text-end backdrop-blur-lg rounded-t-md">
+        <div className="flex flex-col items-end justify-around p-3 bg-neutral-900 col-span-4 shadow-md text-end backdrop-blur-lg rounded-t-md break-words">
           {/* previous operand */}
           <div className="text-zinc-400 tracking-[-0.05rem] h-6">
             {formatOperand(previousOperand)} {operation}
           </div>
           {/* current operand */}
-          <div className="text-2xl tracking-[-0.05rem] h-8 text-white">
+          <div className="text-2xl tracking-[-0.05rem] w-full min-h-[32px] text-white">
             {formatOperand(currentOperand)}
           </div>
         </div>
